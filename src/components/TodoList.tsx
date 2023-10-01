@@ -25,6 +25,23 @@ export function TodoList({}: TodoListProps) {
 		setTasksCompleted(tasksCompleted)
 	}
 
+	const handleUpdateTask = (taskId: string, task: TaskType) => {
+		setTaskObject((prevState) => {
+			return {
+				...prevState,
+				[taskId]: task,
+			}
+		})
+	}
+
+	const handleDeleteTask = (taskId: string) => {
+		setTaskObject((prevState) => {
+			const newState = { ...prevState }
+			delete newState[taskId]
+			return newState
+		})
+	}
+
 	return (
 		<div className={styles.wrapper}>
 			<header className={styles.header}>
@@ -53,7 +70,13 @@ export function TodoList({}: TodoListProps) {
 				</header>
 
 				{Object.entries(taskObject).map(([itemId, todoItem]) => (
-					<div key={itemId}>Task</div>
+					<TodoItem
+						key={itemId}
+						taskId={itemId}
+						task={todoItem}
+						handleUpdateTask={handleUpdateTask}
+						handleDeleteTask={handleDeleteTask}
+					/>
 				))}
 			</div>
 		</div>
