@@ -1,0 +1,24 @@
+.header {
+	background: var(--gray-700, #0d0d0d);
+	height: 12.5rem;
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	font-size: 2.5rem;
+	font-weight: 900;
+	line-height: normal;
+}
+
+.logoImg {
+	height: 2.25rem;
+	margin-right: 0.75rem;
+}
+
+.toSpan {
+	color: var(--blue, #4ea8de);
+}
+
+.doSpan {
+	color: var(--purple-dark, #5e60ce);
+}
