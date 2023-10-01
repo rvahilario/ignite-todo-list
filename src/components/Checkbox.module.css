@@ -1,0 +1,31 @@
+.container {
+	display: flex;
+	width: 1.5rem;
+	height: 1.5rem;
+	padding: 0.2046rem;
+	padding-top: 0;
+	justify-content: center;
+	align-items: center;
+}
+
+.chk {
+	display: flex;
+	width: 1.0909rem;
+	height: 1.0909rem;
+	border: 2px solid var(--blue);
+	border-radius: 999px;
+	align-items: center;
+	justify-content: center;
+	&:hover {
+		border-color: var(--blue-dark);
+	}
+}
+
+.chk.checked {
+	border-color: var(--purple-dark);
+	background: var(--purple-dark);
+	&:hover {
+		border-color: var(--purple);
+		background: var(--purple);
+	}
+}
