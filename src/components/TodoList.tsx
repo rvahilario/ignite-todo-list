@@ -1,13 +1,29 @@
 import { todoListMock } from '../mocks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './TodoList.module.css'
 
 import { PlusCircle } from '@phosphor-icons/react'
+import { TodoItem } from './TodoItem'
 
 type TodoListProps = {}
 
 export function TodoList({}: TodoListProps) {
-	const [todoList, setTodoList] = useState<TodoItemType[]>(todoListMock)
+	const [taskObject, setTaskObject] = useState(todoListMock)
+	const [tasksCompleted, setTasksCompleted] = useState(0)
+	const [totalTasks, setTotalTasks] = useState(0)
+
+	useEffect(() => {
+		countTasksDone()
+	}, [taskObject])
+
+	function countTasksDone() {
+		let totalTasks = Object.entries(taskObject).length
+		let tasksCompleted = Object.entries(taskObject)?.filter(
+			([_, todoItem]) => todoItem.isCompleted
+		).length
+		setTotalTasks(totalTasks)
+		setTasksCompleted(tasksCompleted)
+	}
 
 	return (
 		<div className={styles.wrapper}>
@@ -27,17 +43,17 @@ export function TodoList({}: TodoListProps) {
 				<header className={styles.contentHeader}>
 					<label className={styles.tasksCreated}>
 						Tasks created
-						<span>{todoList.length}</span>
+						<span>{Object.entries(taskObject).length}</span>
 					</label>
 
 					<label className={styles.tasksCompleted}>
 						Completed
-						<span>{`${2} out of ${todoList.length}`}</span>
+						<span>{`${tasksCompleted} out of ${totalTasks}`}</span>
 					</label>
 				</header>
 
-				{todoList.map((todoItem) => (
-					<div key={todoItem.id}>{todoItem.content.toString()}</div>
+				{Object.entries(taskObject).map(([itemId, todoItem]) => (
+					<div key={itemId}>Task</div>
 				))}
 			</div>
 		</div>
