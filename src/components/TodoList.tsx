@@ -1,9 +1,10 @@
 import { todoListMock } from '../mocks'
 import { useEffect, useState } from 'react'
 import styles from './TodoList.module.css'
+import { v4 as uuidv4 } from 'uuid'
 
 import { PlusCircle } from '@phosphor-icons/react'
-import { TodoItem } from './TodoItem'
+import { Task } from './Task'
 
 type TodoListProps = {}
 
@@ -11,6 +12,7 @@ export function TodoList({}: TodoListProps) {
 	const [taskObject, setTaskObject] = useState(todoListMock)
 	const [tasksCompleted, setTasksCompleted] = useState(0)
 	const [totalTasks, setTotalTasks] = useState(0)
+	const [taskInput, setTaskInput] = useState('')
 
 	useEffect(() => {
 		countTasksDone()
@@ -42,15 +44,33 @@ export function TodoList({}: TodoListProps) {
 		})
 	}
 
+	const handleCreateTask = () => {
+		const newTaskId = uuidv4()
+		const newTask: TaskType = {
+			content: taskInput,
+			isCompleted: false,
+		}
+
+		setTaskObject((prevState) => {
+			return {
+				[newTaskId]: newTask,
+				...prevState,
+			}
+		})
+		setTaskInput('')
+	}
+
 	return (
 		<div className={styles.wrapper}>
 			<header className={styles.header}>
 				<input
 					className={styles.input}
 					type="text"
-					placeholder="Add a new todo"
+					placeholder="Add a new task"
+					value={taskInput}
+					onChange={(e) => setTaskInput(e.target.value)}
 				/>
-				<button className={styles.createButton}>
+				<button className={styles.createButton} onClick={handleCreateTask}>
 					Create
 					<PlusCircle size={'1rem'} weight="bold" />
 				</button>
@@ -69,11 +89,11 @@ export function TodoList({}: TodoListProps) {
 					</label>
 				</header>
 
-				{Object.entries(taskObject).map(([itemId, todoItem]) => (
-					<TodoItem
-						key={itemId}
-						taskId={itemId}
-						task={todoItem}
+				{Object.entries(taskObject).map(([taskId, task]) => (
+					<Task
+						key={taskId}
+						taskId={taskId}
+						task={task}
 						handleUpdateTask={handleUpdateTask}
 						handleDeleteTask={handleDeleteTask}
 					/>

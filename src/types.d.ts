@@ -3,6 +3,6 @@ interface TaskType {
 	content: string
 }
 
-type TodoObject = {
+type TaskObject = {
 	[id: string]: TaskType
 }

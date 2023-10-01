@@ -1,21 +1,21 @@
-import styles from './TodoItem.module.css'
+import styles from './Task.module.css'
 
 import { Checkbox } from './Checkbox'
 import { Trash } from '@phosphor-icons/react'
 
-type ItemProps = {
+type TaskProps = {
 	taskId: string
 	task: TaskType
 	handleUpdateTask: (id: string, task: TaskType) => void
 	handleDeleteTask: (id: string) => void
 }
 
-export function TodoItem({
+export function Task({
 	taskId,
 	task,
 	handleUpdateTask,
 	handleDeleteTask,
-}: ItemProps) {
+}: TaskProps) {
 	const handleSetTaskCompleted = () => {
 		const updatedTask = { ...task, isCompleted: !task?.isCompleted }
 		handleUpdateTask(taskId, updatedTask)

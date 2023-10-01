@@ -13,6 +13,8 @@
 	margin: 0 0.75rem;
 	width: 100%;
 	font-size: 0.875rem;
+	text-wrap: wrap;
+	overflow-wrap: anywhere;
 
 	&.checked {
 		color: var(--gray-300);

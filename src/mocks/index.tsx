@@ -1,4 +1,4 @@
-export const todoListMock: TodoObject = {
+export const todoListMock: TaskObject = {
 	'ad99a2ac-7075-4859-b999-01fdac1036c9': {
 		isCompleted: false,
 		content: 'Buy groceries',

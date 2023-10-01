@@ -4,7 +4,6 @@ import rocketLogo from '../assets/rocket.svg'
 export function Header() {
 	return (
 		<header className={styles.header}>
-			{/* <div className={styles.content}> */}
 			<img
 				className={styles.logoImg}
 				src={rocketLogo}
@@ -12,7 +11,6 @@ export function Header() {
 			/>
 			<span className={styles.toSpan}>to</span>
 			<span className={styles.doSpan}>do</span>
-			{/* </div> */}
 		</header>
 	)
 }
