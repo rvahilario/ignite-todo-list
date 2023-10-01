@@ -14,6 +14,11 @@
 	--gray-700: #0d0d0d;
 }
 
+:focus {
+	outline: transparent;
+	box-shadow: 0 0 0 1px var(--purple-dark, #5e60ce);
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -21,8 +26,7 @@
 }
 
 body {
-	background: var(--Gray-600, #1a1a1a);
-	color: var(--Gray-100, #f2f2f2);
+	background: var(--gray-600, #1a1a1a);
 	line-height: 1.4;
 	-webkit-font-smoothing: antialiased;
 }
@@ -31,6 +35,7 @@ body,
 input,
 textarea,
 button {
+	color: var(--gray-100, #f2f2f2);
 	font-family: 'Inter', sans-serif;
 	font-weight: 400;
 	font-size: 1rem;

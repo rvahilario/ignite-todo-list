@@ -1,5 +1,5 @@
 .header {
-	background: var(--gray-700, #0d0d0d);
+	background: var(--gray-700);
 	height: 12.5rem;
 	display: flex;
 	flex: 1;
@@ -16,9 +16,9 @@
 }
 
 .toSpan {
-	color: var(--blue, #4ea8de);
+	color: var(--blue);
 }
 
 .doSpan {
-	color: var(--purple-dark, #5e60ce);
+	color: var(--purple-dark);
 }
